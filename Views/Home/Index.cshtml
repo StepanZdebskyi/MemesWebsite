@@ -1,0 +1,198 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using UkrMemesWeb.Models
+@model UserClass
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" type="text/css" >
+    <link rel="stylesheet" href="~/css/dialogs.css" asp-append-version="true" type="text/css">
+    <!--favicon links starts -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/faviconpack/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/faviconpack/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/faviconpack/favicon-16x16.png">
+    <link rel="manifest" href="~/faviconpack/site.webmanifest">
+    <link rel="mask-icon" href="~/faviconpack/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!--favicon links ends -->
+    <title>UkrMemes</title>
+</head>
+<body>
+    <script src="~/js/index.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <div class="pageHeader">
+        <div class="pageHeaderLogo">
+            <p style="font-size: 15px; font-family: 'Calibri';">
+                Ukr
+                Memes
+            </p>
+        </div>
+        <div class="pageHeaderNavigation">
+            <button onclick="showLoginDialog();" class="buttonStyle">
+                <abbr title="Увійти"><img style="width: 40px; height: 40px; margin-top: 5px" src="/icons/icons8-login-64.png" alt=""></abbr>
+                <strong><p class="buttonTitle">Log in</p></strong>
+            </button>
+            <button onclick="showRegisterDialog();" class="buttonStyle">
+                <abbr title="Зареєструватися"><img style="width: 40px; height: 40px; margin-top: 5px" src="/icons/icons-register.png" alt=""></abbr>
+                <strong><p class="buttonTitle">Reg</p></strong>
+            </button>
+            <a href="#about" class="linkbuttonStyle">
+                <abbr title="Про проєкт"><img style="width: 40px; height: 40px; margin-top: 5px; margin-left: 5px;" src="/icons/icons8-about-60.png" alt=""></abbr>
+                <strong><p class="buttonTitle">About</p></strong>
+            </a>
+            <a href="#contact" class="linkbuttonStyle">
+                <abbr title="Скарги та пропозиції"><img style="width: 40px; height: 40px; margin-top: 5px; margin-left: 5px;" src="/icons/icons8-feedback-48.png" alt=""></abbr>
+                <strong><p class="buttonTitle">Feedb</p></strong>
+            </a>
+        </div>
+    </div>
+    <div>
+        <div style="text-align: center;">
+            <p class="introText">
+                Вітаємо на сайті справжніх українських мемів
+            </p>
+        </div>
+        <div class="introPic">
+            <img src="/pics/russian_warship.jpg" alt="russian warship meme" style="width: 800px; height: 500px;">
+        </div>
+    </div>
+
+    <div id="about" class="aboutProject">
+        <div style="text-align: center;">
+            <p class="introText">
+                Чому саме меми?
+            </p>
+        </div>
+
+        <div style="margin-left: 50px;">
+            <div class="descrPic">
+                <img src="/pics/cossacs_writing_letter_to_sultan.jpg" alt="cossacs writing letter to sultan" style="width: 500px; height: 325px;">
+            </div>
+
+            <div class="descrPic">
+                <img src="/pics/cossacs_writing_letter_to_putin.jpg" alt="cossacs writing letter to huilo" style="width: 500px; height: 325px;">
+            </div>
+        </div>
+
+        <div style="margin-top: 400px;margin-left: 150px;width: 70%; height: 120px;">
+            <p class="descrText">
+                Загальновідомо, що українці не тільки люблять жартувати, але і дуже добре вміють це робити.
+                На цьому сайті ви зможете побачити збірку сучасних українських жартів (які ще називають мемами) та
+                дізнатися більше про історію виникнення, розвитку кожного із них.
+            </p>
+        </div>
+    </div>
+
+    <div id="contact">
+        <div style="text-align: center;">
+            <p class="introText">
+                Контактні дані
+            </p>
+        </div>
+
+        <div style="margin-left: 220px;">
+            <div class="contactInfo">
+                <p class="contactText" style="margin-top:0">
+                    Мій e-mail:
+                </p>
+                <p class="contactText" style="font-size: 20px;">
+                    stepan.zdebskyi.pz.2020@lpnu.ua
+                </p>
+            </div>
+            <div class="contactInfo">
+                <p class="contactText">
+                    Я у Telegram:
+                </p>
+                <p style="margin-top: 17px;" class="contactText">
+                    @("@")bandera_vstav
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <dialog id="loginDialog">
+            <div class="dialogHeader">
+                <p style="float: left;" class="dialogHeaderText">Login page</p>
+                <div style="margin-left: 500px; margin-top: -84px; margin-right: -100px;" class="pageHeaderLogo">
+                    <p style="font-size: 15px; font-family: 'Calibri';">
+                        Ukr
+                        Memes
+                    </p>
+                </div>
+            </div>
+
+            <div class="formstyle">
+                <form method="post" name="loginform" asp-controller="Home" asp-action="LoginUser">
+                    <div class="formelement">
+                        <label for="userslogin" class="formlabel" style="padding-right: 50px;">Login:</label>
+                        <input asp-for=_UsersLogin pattern="[a-z0-9._%+-]+@("@")[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    </div>
+
+                    <br>
+                    <div class="formelement">
+                        <label for="userspass" class="formlabel" style="padding-right: 17px;">Password:</label>
+                        <input asp-for=_UsersPass required type="password">
+                        <input asp-for=_IsAdmin required type="hidden">
+                    </div>
+
+                    <div style="margin-top: 20px">
+                        <button style="margin-left:-90px; float: left;" onclick="finishLoginForm()" class="submitbuttonlogin" type="submit">Submit</button>
+                        <button style="margin-left: 60px;" onclick="CloseLoginDialog()" class="submitbuttonlogin" type="button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <dialog id="registerDialog">
+            <div class="dialogHeader">
+                <p style="float: left;" class="dialogHeaderText">Register page</p>
+                <div style="margin-left: 500px; margin-top: -84px; margin-right: -100px;" class="pageHeaderLogo">
+                    <p style="font-size: 15px; font-family: 'Calibri';">
+                        Ukr
+                        Memes
+                    </p>
+                </div>
+            </div>
+
+            <div class="formstyle">
+                <form name="registerform" method="post" asp-controller="Home" asp-action="RegUser">
+                    <div class="formelement">
+                        <label for="" class="formlabel" style="padding-right: 64px;">Username:</label>
+                        <input asp-for=_UsersName pattern="[a-zA-z]+" required type="text">
+                    </div>
+
+                    <br>
+                    <div class="formelement">
+                        <label for="" class="formlabel" style="padding-right: 104px;">Login:</label>
+                        <input asp-for=_UsersLogin pattern="[a-z0-9._%+-]+@("@")[a-z0-9.-]+\.[a-z]{2,4}$" required type="text">
+                    </div>
+
+                    <br>
+                    <div class="formelement">
+                        <label for="" class="formlabel" style="padding-right: 72px;">Password:</label>
+                        <input asp-for=_UsersPass required type="password">
+                    </div>
+
+                    <br>
+                    <div class="formelement">
+                        <label for="" class="formlabel" style="padding-right: 3px;">Confirm password:</label>
+                        <input required type="password">
+                    </div>
+
+                    <div style="margin-top: 20px">
+                        <button style="margin-left:-90px; float: left;" onclick="finishRegisterForm()" class="submitbuttonreg" type="submit">Submit</button>
+                        <button style="margin-left: 60px;" onclick="CloseRegisterDialog()" class="submitbuttonlogin" type="button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+    </div>
+</body>
+</html>

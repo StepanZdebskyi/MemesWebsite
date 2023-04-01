@@ -1,0 +1,328 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+body {
+    background-color: rgb(149, 208, 234);
+}
+
+.pageHeader {
+    width: 95%;
+    height: 90px;
+    margin-left: -10px;
+    margin-top: -10px;
+    background-color: rgb(65, 167, 244);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(144, 204, 249);
+    border-bottom-right-radius: 20px;
+}
+
+.pageHeaderLogo {
+    float: left;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: rgb(235, 237, 99);
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.buttonStyle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border-style: none;
+    margin-left: 30px;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.linkbuttonStyle {
+    text-decoration: none;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border-style: none;
+    margin-left: 30px;
+    float: left;
+    background-color: aliceblue;
+}
+
+.buttonTitle {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 5px;
+    font-family: 'Calibri';
+    color: rgb(68, 68, 68);
+}
+
+.pageHeaderNavigation {
+    width: 400px;
+    height: 70px;
+    margin-top: 5px;
+    margin-left: 800px;
+}
+
+.introPic {
+    width: 800px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.introText {
+    margin-top: 50px;
+    font-family: 'Calibri';
+    font-size: 48px;
+    color: aliceblue;
+    text-shadow: 0 0 2px black;
+}
+
+.descrText {
+    margin-top: 50px;
+    font-family: 'Calibri';
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+}
+
+.descrPic {
+    float: left;
+    width: 500px;
+    height: 325px;
+    margin-left: 50px;
+}
+
+.contactInfo {
+    text-align: center;
+    width: 30%;
+    height: 80px;
+    background-color: rgb(241, 234, 138);
+    border-radius: 30px;
+}
+
+    .contactInfo:first-child {
+        float: left;
+    }
+
+    .contactInfo:last-child {
+        margin-left: 500px;
+    }
+
+.contactText {
+    font-family: 'Calibri';
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+}
+
+    .contactText:first-child {
+        margin-bottom: -10px;
+    }
+
+.usernameheader {
+    height: 50px;
+    width: 200px;
+    background-color: rgb(235, 237, 99);
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 960px;
+}
+
+.usericon {
+    width: 49px;
+    height: 49px;
+    border-radius: 100%;
+    background-color: rgb(235, 237, 99);
+    border: solid;
+    border-width: 2px;
+    border-color: rgb(44, 97, 210);
+    float: left;
+    position: absolute;
+    margin-left: 946px;
+    margin-top: 19px;
+}
+
+.searchspace {
+    width: 790px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(65, 167, 244);
+}
+
+#searchline {
+    width: 640px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 27px;
+    border-radius: 5px;
+    font-family: 'Calibri';
+    font-size: 30px;
+}
+
+#searchlineimage {
+    width: 64px;
+    height: 64px;
+    background-color: rgb(65, 167, 244);
+    border-radius: 15px;
+    margin-left: 20px;
+    float: left;
+    margin-top: 18px;
+}
+
+#imagesgalery {
+    width: 80%;
+    height: auto;
+    background-color: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.imagecell {
+    width: 39%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 50px;
+    height: 300px;
+    background-color: rgb(65, 167, 244);
+    position: relative;
+    float: left;
+    padding: 0.5%;
+    border-radius: 5px;
+}
+
+.imageincell {
+    width: 100%;
+    height: 80%;
+    border: none;
+    background-color: aliceblue;
+}
+
+.imageinfo {
+    width: 90%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: rgb(235, 237, 99);
+    margin-top: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Calibri';
+}
+
+#addphotobutton {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-color: rgb(65, 167, 244);
+    border-style: none;
+    border-radius: 100%;
+    font-family: 'Calibri';
+    text-align: center;
+    font-size: 18px;
+    margin-top: -84px;
+    margin-left: 950px;
+    z-index: +1;
+    cursor: pointer;
+}
+
+#menubuttonspace {
+    width: 80px;
+    height: 60px;
+    background-color: rgb(65, 167, 244);
+    margin-left: -10px;
+    margin-top: -79px;
+    position: fixed;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+    border-width: 2px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-color: rgb(52, 116, 255);
+    z-index: +2;
+    float: none;
+    transition: margin-left 0.5s;
+}
+
+.menubutton {
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 100%;
+    background-color: inherit;
+    cursor: pointer;
+    position: fixed;
+}
+
+.verticalLine {
+    height: 80px;
+    width: 2px;
+    margin-left: 15px;
+    margin-top: 5px;
+    background-color: rgb(59, 59, 59);
+    border-style: none;
+    float: left;
+}
+
+#mainMenu {
+    width: 25%;
+    height: 100%;
+    background-color: rgb(65, 167, 244);
+    z-index: +1;
+    margin-left: -25%;
+    position: fixed;
+    top: 90px;
+    left: 0px;
+    transition: margin-left 0.5s;
+    visibility: visible;
+}
+
+.menubuttonslist {
+    list-style: none;
+}
+
+.horizontalLine {
+    width: 100%;
+    margin-left: -9%;
+    background-color: rgb(149, 208, 234);
+    height: 1px;
+    border-style: none;
+    border-radius: 50%;
+    margin-top: 8px;
+}
+
+.menuitemspace {
+    width: 100%;
+    height: 60px;
+    background-color: inherit;
+    border-radius: 10px;
+    border-style: none;
+    padding-left: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: -16%;
+}
+
+.menuitemspace:first-child {
+    margin-top: 10px;
+}
+
+.menubuttontitle {
+    text-align: left;
+    margin-left: 25%;
+    font-family: 'Calibri';
+    font-size: 18px;
+    margin-top: 14px;
+}

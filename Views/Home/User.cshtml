@@ -1,0 +1,158 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@namespace UkrMemesWeb.Models
+@model List<UserClass>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css" asp-append-version="true" type="text/css">
+    <link rel="stylesheet" href="/css/dialogs.css" asp-append-version="true" type="text/css">
+    <!--favicon links starts -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/faviconpack/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/faviconpack/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/faviconpack/favicon-16x16.png">
+    <link rel="manifest" href="~/faviconpack/site.webmanifest">
+    <link rel="mask-icon" href="~/faviconpack/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!--favicon links ends -->
+    <title>UkrMemes</title>
+</head>
+<body onload="setUsername()">
+    <script src="~/js/index.js" asp-append-version="true"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <div class="pageHeader" style="position: fixed; top: 9px; z-index:+3">
+        <div style="margin-left: 20px" class="pageHeaderLogo">
+            <p style="font-size: 15px; font-family: 'Calibri';">
+                Ukr
+                Memes
+            </p>
+        </div>
+
+        <div class="usericon">
+            <p id="usericontext" style="font-family:'Calibri'; font-size: 30px; text-align: center; margin-top: 5px;"></p>
+        </div>
+        <div class="usernameheader">
+            <p style="font-family:'Calibri'; font-size: 20px; padding-top: 12px; margin-left: 25px;" id="usernametext"></p>
+        </div>
+    </div>
+
+    <div id="menubuttonspace">
+        <button onclick="UseMainMenu()" class="menubutton">
+            <img id="menubuttonicon" src="/icons/list.png" style="width: 40px; height: 40px;" alt="">
+        </button>
+    </div>
+
+    <!-- menu space starts -->
+    <div id="mainMenu">
+        <ul class="menubuttonslist">
+            <li>
+                <button class="menuitemspace" onmouseover="mouseOverMenuButton(this)" onmouseout="mouseOutMenuButton(this)">
+                    <div style="width:50px; height: 50px; margin-top: 1px; border-radius:10px; border-style:none; background-color: aliceblue; float: left;">
+                        <img src="/icons/loupe.png" style="width: 40px; height: 40px; margin-top: 5px; margin-left: 5px;" alt="">
+                    </div>
+                    <p class="menubuttontitle">Give Admin Rules</p>
+                </button>
+            </li>
+            <li>
+                <button class="menuitemspace" onmouseover="mouseOverMenuButton(this)" onmouseout="mouseOutMenuButton(this)">
+                    <div style="width:50px; height: 50px; margin-top: 1px; border-radius:10px; border-style:none; background-color: aliceblue; float: left;">
+                        <img src="/icons/loupe.png" style="width: 40px; height: 40px; margin-top: 5px; margin-left: 5px;" alt="">
+                    </div>
+                    <p class="menubuttontitle">Give Admin Rules</p>
+                </button>
+            </li>
+            <li>
+                <button class="menuitemspace" onmouseover="mouseOverMenuButton(this)" onmouseout="mouseOutMenuButton(this)">
+                    <div style="width:50px; height: 50px; margin-top: 1px; border-radius:10px; border-style:none; background-color: aliceblue; float: left;">
+                        <img src="/icons/loupe.png" style="width: 40px; height: 40px; margin-top: 5px; margin-left: 5px;" alt="">
+                    </div>
+                    <p class="menubuttontitle">Give Admin Rules</p>
+                </button>
+            </li>
+            <hr class="horizontalLine">
+            <li>
+                <button onclick="localStorage.setItem('userlogin', '');window.location.href = '@Url.Action("LogOut", "Home")';" 
+                        class="menuitemspace" onmouseover="mouseOverMenuButton(this)" onmouseout="mouseOutMenuButton(this)">
+                    <div style="width:50px; height: 50px; margin-top: 1px; border-radius:10px; border-style:none; background-color: aliceblue; float: left;">
+                        <img src="/icons/loupe.png" style="width: 40px; height: 40px; margin-top: 5px; margin-left: 5px;" alt="">
+                    </div>
+                    <p class="menubuttontitle">Log out</p>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <!-- menu space ends -->
+
+    <div class="searchspace" style="margin-left: 170px; padding-right: 105px; margin-top: 170px;">
+        <form id="searchimageform" onsubmit="SearchImage()">
+            <div id="searchlineimage">
+                <img src="/icons/loupe.png" width="64" height="64">
+            </div>
+            <input id="searchline" value="Знайти мем:" autocomplete="off" type="text">
+        </form>
+    </div>
+
+    <div id="imagesgalery">
+    </div>
+
+    <dialog id="detailsdialog">
+        <div class="dialogHeader" style="margin-bottom: 50px;">
+            <p style="float: left;" class="dialogHeaderText">Meme info</p>
+            <div style="margin-left: 500px; margin-top: 15px; margin-right: -100px;" class="pageHeaderLogo">
+                <p style="font-size: 15px; font-family: 'Calibri';">
+                    Ukr
+                    Memes
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <div class="imagedetailsline">
+                <p style="margin-top:9px;">Назва мему:</p>
+            </div>
+            <div class="imageinfostyle">
+                <p id="imagenamedetails">00000</p>
+            </div>
+        </div>
+
+        <div class="imagedetailsline">
+            <p style="margin-top:9px;">Опис:</p>
+        </div>
+
+        <div class="imageinfostyle">
+            <p id="imagedescriptiondetails">000</p>
+        </div>
+
+        <div>
+
+            <div class="imagedetailsline">
+                <p style="margin-top:9px;">Ключові слова:</p>
+            </div>
+
+            <div class="imageinfostyle">
+                <p id="imagekeywordsdetails">00</p>
+            </div>
+        </div>
+        <div>
+
+            <div class="imagedetailsline">
+                <p style="margin-top:9px;">Дата додавання:</p>
+            </div>
+            <div class="imageinfostyle">
+                <p id="imageaddingdatedetails">000</p>
+            </div>
+
+        </div>
+
+        <div>
+            <button class="closedialogbutton" onclick="ClosePictureDetails()">Close</button>
+        </div>
+    </dialog>
+</body>
+</html>
